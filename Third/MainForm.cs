@@ -12,6 +12,7 @@ namespace Third
 {
     public partial class MainForm : Form
     {
+        //Объекты, содержащие числа с формы
         private NumberSystem first = null;
         private NumberSystem second = null;
         private NumberSystem result = null;
@@ -20,7 +21,8 @@ namespace Third
         {
             InitializeComponent();
         }
-
+       
+        //Выполнение выбранного действия
         private void Calculate()
         {
             if(firstNumber.Text == "" || secondNumber.Text == "")
@@ -88,11 +90,13 @@ namespace Third
             }
         }
 
+        //Перерасчёт при смене действия
         private void OnOperationChanged(object sender, EventArgs e)
         {
             Calculate();
         }
 
+        //Перерасчёт при изменении первого числа
         private void OnFirstTextChanged(object sender, EventArgs e)
         {
             if (firstNumber.Text == "") {
@@ -124,6 +128,7 @@ namespace Third
             Calculate();
         }
 
+        //Перерасчёт при изменении второго числа
         private void OnSecondTextChanged(object sender, EventArgs e)
         {
             if (secondNumber.Text == "")
@@ -156,6 +161,7 @@ namespace Third
             Calculate();
         }
 
+        //Перерасчёт при изменении сс первого числа
         private void OnFirstSystemChanged(object sender, EventArgs e)
         {
             if (first is null) return;
@@ -184,6 +190,8 @@ namespace Third
             }
             firstNumber.Text = first.Number;
         }
+
+        //Перерасчёт при изменении сс второго числа
         private void OnSecondSystemChanged(object sender, EventArgs e)
         {
             if (second is null) return;
@@ -212,6 +220,8 @@ namespace Third
             }
             secondNumber.Text = second.Number;
         }
+
+        //Перерасчёт при изменении сс результата
         private void OnResultSystemChanged(object sender, EventArgs e)
         {
             if (result is null) return;
@@ -236,12 +246,14 @@ namespace Third
             resultNumber.Text = result.Number;
         }
 
+        //Переход на следующее поле при нажатии на кнопку при выделенном comboBox'e
         private void cmbOperation_KeyPress(object sender, KeyPressEventArgs e)
         {
             SendKeys.Send("{TAB}");
             e.Handled = true;
         }
 
+        //Проверка ввода и переход на следующее поле при нажатии на enter
         private void firstNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -296,6 +308,7 @@ namespace Third
             }
         }
 
+        //Проверка ввода и переход на следующее поле при нажатии на enter
         private void secondNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
